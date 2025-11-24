@@ -3,6 +3,7 @@
 #include "space.h"
 #include <stdlib.h>
 #include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
 
 int line_values_count(const char* line) {
     int count=0;
@@ -320,6 +321,16 @@ int main() {
                     fullscreen = !fullscreen;
                     SDL_SetWindowFullscreen(window, fullscreen);
                 }
+                /*
+                Screenshot work in progress
+                if (key == SDLK_F12) {
+                    
+                    SDL_Surface* surface = SDL_CreateSurface(camera.size_x, camera.size_y, SDL_PIXELFORMAT_ARGB8888);
+                    SDL_RenderReadPixels(renderer, NULL);
+
+                    IMG_SavePNG(surface, "./screen.png");
+                }
+                */
             }
 
            
@@ -381,12 +392,11 @@ int main() {
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        SDL_RenderLine(renderer, 0, 0, 50, 50);
 
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         //draw_cube(renderer, camera, create_cube((Vector3D){1,1,1}, (Vector3D){0,0,0}));
         //draw_cube(renderer, camera, create_cube((Vector3D){1,1,1}, (Vector3D){0,1,0}));
-    
+
 
         draw_mesh(renderer, camera, import_mesh);
 
